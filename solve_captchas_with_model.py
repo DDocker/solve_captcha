@@ -65,7 +65,7 @@ for image_file in captcha_image_files:
 
     # If we found more or less than 4 letters in the captcha, our letter extraction
     # didn't work correcly. Skip the image instead of saving bad training data!
-    if len(letter_image_regions) != 4:
+    if len(letter_image_regions) != 5:
         continue
 
     # Sort the detected letter images based on the x coordinate to make sure
@@ -100,7 +100,7 @@ for image_file in captcha_image_files:
         predictions.append(letter)
 
         # draw the prediction on the output image
-        cv2.rectangle(output, (x - 2, y - 2), (x + w + 4, y + h + 4), (0, 255, 0), 1)
+        cv2.rectangle(output, (x - 2, y - 2), (x + w + 5, y + h + 5), (0, 255, 0), 1)
         cv2.putText(output, letter, (x - 5, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.55, (0, 255, 0), 2)
 
     # Print the captcha's text
